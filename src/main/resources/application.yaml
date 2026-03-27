@@ -1,3 +1,16 @@
 spring:
-  application:
-    name: StoreOutlet
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_store_ropa?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8080
