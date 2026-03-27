@@ -26,7 +26,7 @@ public class PrendaDetalle {
     private Integer stock;
 
     @Column(name = "pDetalle_SKU")
-    private Integer sku;
+    private String sku;
 
     @Column(name = "pDetalle_Precio")
     private Float precio;
