@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
-@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     @Autowired
@@ -18,6 +17,18 @@ public class UsuarioController {
     @GetMapping
     public List<Usuario> getAll() {
         return repo.findAll();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Usuario req) {
+
+        Usuario user = repo.findByCorreo(req.getCorreo());
+
+        if (user == null || !user.getClave().equals(req.getClave())) {
+            return ResponseEntity.status(401).body("Credenciales incorrectas");
+        }
+
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{id}")
