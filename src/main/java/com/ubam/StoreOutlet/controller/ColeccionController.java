@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/colecciones")
-@CrossOrigin(origins = "*")
 public class ColeccionController {
 
     @Autowired
