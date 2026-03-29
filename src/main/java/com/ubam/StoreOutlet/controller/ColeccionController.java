@@ -1,7 +1,10 @@
 package com.ubam.StoreOutlet.controller;
 
 import com.ubam.StoreOutlet.model.Coleccion;
+import com.ubam.StoreOutlet.model.views.PrendaColeccionView;
 import com.ubam.StoreOutlet.repository.ColeccionRepository;
+import com.ubam.StoreOutlet.repository.views.PrendaColeccionRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +17,17 @@ public class ColeccionController {
     @Autowired
     private ColeccionRepository repo;
 
+    @Autowired
+    private PrendaColeccionRepository prendaRepo;
+
     @GetMapping
     public List<Coleccion> getAll() {
         return repo.findAll();
+    }
+
+    @GetMapping("/{id}/prenda")
+    public List<PrendaColeccionView> getByColeccion(@PathVariable Integer id) {
+        return prendaRepo.findByPrendaColeccionId(id);
     }
 
     @GetMapping("/{id}")
